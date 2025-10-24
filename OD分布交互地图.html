@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2837e7d253f24124d354be933c61f261 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+    <div style="position: fixed; 
+                top: 10px; left: 50px; width: 400px; height: 120px; 
+                background-color: white; border:2px solid grey; z-index:9999; 
+                font-size:14px; padding: 10px; border-radius: 5px;">
+        <b>🚴 上海地区OD出行分布热力图</b><br>
+        📍 地图已定位到上海市中心<br>
+        🔴 红色区域表示出行起点密集区<br>
+        🔵 蓝色方框为上海地区范围<br>
+        ↗️ 右上角可切换底图
+    </div>
+    
+    
+            <div class="folium-map" id="map_2837e7d253f24124d354be933c61f261" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2837e7d253f24124d354be933c61f261 = L.map(
+                "map_2837e7d253f24124d354be933c61f261",
+                {
+                    center: [31.2304, 121.4737],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f2efb01dc4e381de82f303c7a886961a = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "OpenStreetMap",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_f2efb01dc4e381de82f303c7a886961a.addTo(map_2837e7d253f24124d354be933c61f261);
+        
+    
+            var tile_layer_efd959c1d1cb100c9cf5a7ef0b05f303 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "CartoDB",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_efd959c1d1cb100c9cf5a7ef0b05f303.addTo(map_2837e7d253f24124d354be933c61f261);
+        
+    
+            var heat_map_0c643c18144bf3b5eb3cbbf9c5d72e99 = L.heatLayer(
+                [[31.2920880382168, 121.41869634319], [31.156483, 121.386788], [31.290174, 121.51201], [31.263299724881, 121.396255303963], [31.3255692532632, 121.490949223486], [31.1033801897012, 121.504952663588], [31.219551, 121.515444], [31.026559, 121.189878], [31.315971, 121.50356]],
+                {
+  "minOpacity": 0.4,
+  "maxZoom": 15,
+  "radius": 15,
+  "blur": 10,
+}
+            );
+        
+    
+            heat_map_0c643c18144bf3b5eb3cbbf9c5d72e99.addTo(map_2837e7d253f24124d354be933c61f261);
+        
+    
+            var poly_line_1ab264be1fd1eaeebbef513a0b3185fd = L.polyline(
+                [[31.2294287902353, 121.483326276795], [31.2310996142068, 121.476745506934], [31.2310765737481, 121.476741605577], [31.2344774199014, 121.474110275436], [31.2347477155095, 121.467159232595], [31.2312459331513, 121.468517678584], [31.2317772540707, 121.469077666761], [31.2313559276267, 121.46848267606], [31.231246285932, 121.468626018819], [31.2309626629751, 121.425707059137], [31.2820082044532, 121.439034789638]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_2837e7d253f24124d354be933c61f261);
+        
+    
+        var popup_9f659c8c62aa250ebf14f15a5ca6c803 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fcf9a242d34a4c816c1655fa3ba14819 = $(`<div id="html_fcf9a242d34a4c816c1655fa3ba14819" style="width: 100.0%; height: 100.0%;">车辆 713ED78F8DC23233E0533C0BA8C09291 轨迹</div>`)[0];
+                popup_9f659c8c62aa250ebf14f15a5ca6c803.setContent(html_fcf9a242d34a4c816c1655fa3ba14819);
+            
+        
+
+        poly_line_1ab264be1fd1eaeebbef513a0b3185fd.bindPopup(popup_9f659c8c62aa250ebf14f15a5ca6c803)
+        ;
+
+        
+    
+    
+            var marker_d62ff9bc942d846b7f60ecaf2c90e0d6 = L.marker(
+                [31.2294287902353, 121.483326276795],
+                {
+}
+            ).addTo(map_2837e7d253f24124d354be933c61f261);
+        
+    
+            var icon_0bc75f5ca295d7fd17bd9ab6b57b4f66 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6d8367ebf6892547c9bfb2f2cdc23a48 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b096c7c8f87e6386b241c20e84e192b8 = $(`<div id="html_b096c7c8f87e6386b241c20e84e192b8" style="width: 100.0%; height: 100.0%;">起点 时间: 06:40:56</div>`)[0];
+                popup_6d8367ebf6892547c9bfb2f2cdc23a48.setContent(html_b096c7c8f87e6386b241c20e84e192b8);
+            
+        
+
+        marker_d62ff9bc942d846b7f60ecaf2c90e0d6.bindPopup(popup_6d8367ebf6892547c9bfb2f2cdc23a48)
+        ;
+
+        
+    
+    
+                marker_d62ff9bc942d846b7f60ecaf2c90e0d6.setIcon(icon_0bc75f5ca295d7fd17bd9ab6b57b4f66);
+            
+    
+            var marker_5899ec64bbe25378e6ecee8c4e3fa51b = L.marker(
+                [31.2820082044532, 121.439034789638],
+                {
+}
+            ).addTo(map_2837e7d253f24124d354be933c61f261);
+        
+    
+            var icon_0ce461dfee40332ca10348ac429d194e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "stop",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ffbc5b8b83ed8afd90d0ba671cf1373b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6e5814a1a8db41c54d34a1e2c6ac4530 = $(`<div id="html_6e5814a1a8db41c54d34a1e2c6ac4530" style="width: 100.0%; height: 100.0%;">终点 时间: 21:33:11</div>`)[0];
+                popup_ffbc5b8b83ed8afd90d0ba671cf1373b.setContent(html_6e5814a1a8db41c54d34a1e2c6ac4530);
+            
+        
+
+        marker_5899ec64bbe25378e6ecee8c4e3fa51b.bindPopup(popup_ffbc5b8b83ed8afd90d0ba671cf1373b)
+        ;
+
+        
+    
+    
+                marker_5899ec64bbe25378e6ecee8c4e3fa51b.setIcon(icon_0ce461dfee40332ca10348ac429d194e);
+            
+    
+            var layer_control_cab07004ce07954cc1679ff0b4301d03_layers = {
+                base_layers : {
+                    "OpenStreetMap" : tile_layer_f2efb01dc4e381de82f303c7a886961a,
+                    "CartoDB Positron" : tile_layer_efd959c1d1cb100c9cf5a7ef0b05f303,
+                },
+                overlays :  {
+                    "macro_element_0c643c18144bf3b5eb3cbbf9c5d72e99" : heat_map_0c643c18144bf3b5eb3cbbf9c5d72e99,
+                },
+            };
+            let layer_control_cab07004ce07954cc1679ff0b4301d03 = L.control.layers(
+                layer_control_cab07004ce07954cc1679ff0b4301d03_layers.base_layers,
+                layer_control_cab07004ce07954cc1679ff0b4301d03_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_2837e7d253f24124d354be933c61f261);
+
+        
+    
+            var rectangle_e2405e0237afc2080341a1ac73acd37b = L.rectangle(
+                [[30.8, 121.0], [31.6, 122.0]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_2837e7d253f24124d354be933c61f261);
+        
+    
+        var popup_c8c28a4f0d5504216cb4be14529a6c12 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8e2752fcd5b66f04b26a7f52464a5bc7 = $(`<div id="html_8e2752fcd5b66f04b26a7f52464a5bc7" style="width: 100.0%; height: 100.0%;">上海地区范围</div>`)[0];
+                popup_c8c28a4f0d5504216cb4be14529a6c12.setContent(html_8e2752fcd5b66f04b26a7f52464a5bc7);
+            
+        
+
+        rectangle_e2405e0237afc2080341a1ac73acd37b.bindPopup(popup_c8c28a4f0d5504216cb4be14529a6c12)
+        ;
+
+        
+    
+</script>
+</html>
